@@ -25,11 +25,11 @@ def scan(obj, values: Iterable, types: Tuple, path: str = ''):
         return
     if isinstance(obj, Mapping):
         for key, val in obj.items():
-            search(val, values, types, f'{path}/{key}')
+            scan(val, values, types, f'{path}/{key}')
         return
     if isinstance(obj, Iterable):
         for val in obj:
-            search(val, values, types, f'{path}/{obj}')
+            scan(val, values, types, f'{path}/{obj}')
         return
 
     if obj in values:
@@ -38,5 +38,5 @@ def scan(obj, values: Iterable, types: Tuple, path: str = ''):
         print(f'Found type: {obj} @ {path}')
 
     for prop_key, prop_val in get_obj_prop_items(obj):
-        search(prop_val, values, types, f'{path}/{prop_key}')
+        scan(prop_val, values, types, f'{path}/{prop_key}')
 
