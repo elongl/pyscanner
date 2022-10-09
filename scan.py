@@ -25,7 +25,7 @@ def scan(
         obj,
         scan_values: Iterable,
         scan_types: Tuple,
-        scan_path: str = '',
+        scan_path: str = 'obj',
         max_depth: int = 5,
         depth: int = 0,
         only_public_props: bool = False,
