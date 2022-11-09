@@ -23,8 +23,8 @@ def _get_obj_prop_items(obj, only_public_props: bool, scan_path: str):
 
 def scan(
         obj,
-        scan_values: Iterable,
-        scan_types: Tuple,
+        scan_values: Iterable = tuple(),
+        scan_types: Tuple = tuple(),
         scan_path: str = 'obj',
         max_depth: int = 5,
         depth: int = 0,
@@ -61,7 +61,6 @@ def scan(
         _scanned_ids.remove(id(obj))
     if isinstance(obj, scan_types):
         print(f'[*] Found type @ {scan_path}')
-        _scanned_ids.remove(id(obj))
 
     for prop_key, prop_val in _get_obj_prop_items(obj, only_public_props, scan_path):
         try:
